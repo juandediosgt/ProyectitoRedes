@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <script language="javascript" type="text/javascript">
+
+            //* Este Codigo permite Validar que sea un campo Numerico
+            function Solo_Numerico(variable) {
+                Numer = parseInt(variable);
+                if (isNaN(Numer)) {
+                    return "";
+                }
+                return Numer;
+            }
+            function ValNumero(Control) {
+                Control.value = Solo_Numerico(Control.value);
+            }
+            //* Fin del Codigo para Validar que sea un campo Numerico
+        </script>
+        <script type="text/javascript">
+            //* Este Codigo permite Validar que sea un campo de solo texto
+            function validar(e) { // 1
+                tecla = (document.all) ? e.keyCode : e.which; // 2
+                if (tecla == 8)
+                    return true; // 3
+                patron = /[A-Za-z\sáéíóú]/; // 4
+                te = String.fromCharCode(tecla); // 5
+                return patron.test(te); // 6
+            }
+        </script>
+        <br/>
+        <br/>
+        <div align="center" style="margin-top: 50px; margin-right: 50px">
+            <h2 style="color: white">Sistema de gestión de Inventarios</h2>
+            <h1 style="color: white">Nuevo Producto</h1>
+            <h:form id="nuevoProductoForm">
+                <p:growl id="growl" showDetail="true" life="4000"/>
+                <p:panel style=" border-color:white; text-align: center; background-color: transparent; width: 550px">
+                    <table align="center" cellspacing="20" style=" color: white">
+                        <tr align="left">
+                            <td >
+                                <p:outputLabel value= "Nombre Producto"/>
+                                <br/>
+                                <p:inputText   onkeypress="return validar(event)" value="#{nuevoProductoBean.nombre}"/>
+                            </td>
+                            <td >
+                                <p:outputLabel value= "Descripción de Producto"/>
+                                <br/>
+                                <p:inputText  value="#{nuevoProductoBean.descripcion}"/>
+                            </td>
+                        </tr>
+                        <tr align="left">
+                             <td>
+                                <p:outputLabel value= "Categoría"/>
+                                <br/>
+                                <p:selectOneMenu id="categoria" value="#{nuevoProductoBean.categoria}" style="width: 175px" >
+                                    <f:selectItem itemValue="-1" itemLabel="Seleccione"/>
+                                    <f:selectItems value="#{nuevoProductoBean.listaCategorias}"  />
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:outputLabel value= "Proveedor"/>
+                                <br/>
+                                <p:selectOneMenu id="proveedor" value="#{nuevoProductoBean.proveedor}" style="width: 175px" >
+                                    <f:selectItem itemValue="-1" itemLabel="Seleccione"/>
+                                    <f:selectItems value="#{nuevoProductoBean.listaProveedor}"  />
+                                </p:selectOneMenu>
+                            </td>
+                           
+                        </tr>
+                        <tr  align="left">
+                            <td>
+                                <p:outputLabel value= "Precio Compra"/>
+                                <br/>
+                                <p:inputNumber   value="#{nuevoProductoBean.precio_compra}"/>
+                            </td>
+                            <td>
+                                <p:outputLabel value= "Precio Venta"/>
+                                <br/>
+                                <p:inputNumber  value="#{nuevoProductoBean.precio_venta}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="4">
+                                <p:commandButton value="Ingresar Producto" action="#{nuevoProductoBean.agregarProducto()}" update="nuevoProductoForm" />
+                            </td>
+                        </tr>
+                        <tr border="1px">
+                            <td colspan="4" align="right">
+                                <p:commandButton value="Atras" update="nuevoProductoForm, growl" action="#{nuevoProductoBean.irmenuProducto()}" title="Presione el boton para regresar al Ménu Producto" />                           
+                                 <br/>
+                            </td>
+                        </tr>
+                    </table>
+                </p:panel>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
