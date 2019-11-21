@@ -19,8 +19,16 @@ public class MenuPrincipalBean implements Serializable {
     public MenuPrincipalBean() {
     }
     
-   public String irProducto(){
-       String resultado="producto";
+   public String irInventario(){
+       String resultado="inventario";
+               return resultado;
+   }
+   public String irCompras(){
+       String resultado="compras";
+               return resultado;
+   }
+   public String irVentas(){
+       String resultado="";
                return resultado;
    }
     public String nuevoUsuario(){

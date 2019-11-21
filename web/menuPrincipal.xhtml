@@ -12,16 +12,41 @@
             <h:form id="menuForm">
                 <p:growl id="growl" showDetail="true" life="4000"/>
                 <p:panel style=" border-color:white; text-align: center; background-color: transparent; width: 400px">
-                    <table align="center" cellspacing="20" style=" color: #0075A2">
+                    <table align="center" cellspacing="20" style=" color: #FFFFFF">
                         <tr align="center">
                             <td>
-                                <p:commandButton update="menuForm, growl" value="Menu Producto" action="#{menuPrincipalBean.irProducto()}" title="Presione el boton para dirigirte a Módulo de ventas" />
+                                <p:commandLink update="menuForm, growl" action="#{menuPrincipalBean.irVentas()}" title="Presione el boton para dirigirte a Ventas">
+                                    <p:graphicImage value="/Images/icon_producto.png" width="80px" height="80px"/>
+                                </p:commandLink>
                                 <br/>
+                                <p:outputLabel value= "Ventas"/>
                             </td>                  
                         </tr>
                         <tr align="center">
                             <td>
-                                <p:commandButton value= "Agregar Nuevo Usuario" update="menuForm, growl" action="#{menuPrincipalBean.nuevoUsuario()}" title="Presione el boton para dirigirte a Agregar Nuevo Usuario al Sitema" />   
+                                <p:commandLink update="menuForm, growl" action="#{menuPrincipalBean.irCompras()}" title="Presione el boton para dirigirte a Compras">
+                                    <p:graphicImage value="/Images/icon_producto.png" width="80px" height="80px"/>
+                                </p:commandLink>
+                                <br/>
+                                <p:outputLabel value= "Compras"/>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td>
+                                <p:commandLink update="menuForm, growl" action="#{menuPrincipalBean.irInventario()}" title="Presione el boton para dirigirte al inventario">
+                                    <p:graphicImage value="/Images/icon_producto.png" width="80px" height="80px"/>
+                                </p:commandLink>
+                                <br/>
+                                <p:outputLabel value= "Inventario"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p:commandLink update="menuForm, growl" action="#{menuPrincipalBean.nuevoUsuario()}" title="Presione el boton para dirigirte a Agregar Nuevo Usuario al Sitema">
+                                    <p:graphicImage value="/Images/icon_producto.png" width="80px" height="80px"/>
+                                </p:commandLink>
+                                <br/>
+                                <p:outputLabel value= "Agregar Nuevo Usuario"/>
                             </td>
                         </tr>
                       

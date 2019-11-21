@@ -8,34 +8,43 @@
 
     <ui:define name="content" >
         <br/>
-        <br/>
-        <br/>
-        <br/>
         <div align="center" style="margin-top: 50px; margin-right: 50px">
             <h2 style="color: white">Sistema de gestión de Inventarios</h2>
             <h1 style="color: white">Menú Producto</h1>
             <h:form id="menuProductoForm">
                 <p:growl id="growl" showDetail="true" life="4000"/>
                 <p:panel style="  border-color:white; text-align: center; background-color: transparent; width: 400px">
-                    <table align="center" cellspacing="20" style="  color: #0075A2">
+                    <table align="center" cellspacing="20" style="  color: #FFFFFF">
                         <tr>
                             <td>
-                                <p:commandButton value= "Nuevo Producto" update="menuProductoForm, growl" action="#{menuProductoBean.irNuevoProducto()}" title="Presione el boton para dirigirte a Módulo de ventas" />
+                                <p:commandLink update="menuProductoForm, growl" action="#{menuProductoBean.irNuevoProducto()}" title="Presione el boton para dirigirte a crear un Nuevo producto">
+                                    <p:graphicImage value="/Images/icon_newproducto.png" width="80px" height="80px"/>
+                                </p:commandLink>
+                                <br/>
+                                <p:outputLabel value= "Nuevo Producto"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <p:commandButton value= "Consultar Producto" update="menuProductoForm, growl" action="#{menuProductoBean.irConsultarProducto()}" title="Presione el boton para dirigirte a Módulo de ventas" />           
+                                <p:commandLink update="menuProductoForm, growl" action="#{menuProductoBean.irConsultarProducto()}" title="Presione el boton para dirigirte a consultar productos">
+                                    <p:graphicImage value="/Images/icon_consultaproducto.png" width="80px" height="80px"/>
+                                </p:commandLink>
+                                <br/>
+                                <p:outputLabel value= "Consultar Producto"/>        
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <p:commandButton  value="Actualizar Producto" update="menuProductoForm, growl" action="#{menuProductoBean.irActualizarProducto()}" title="Presione el boton para dirigirte a Módulo de ventas"/>         
+                                <p:commandLink update="menuProductoForm, growl" action="#{menuProductoBean.irActualizarProducto()}" title="Presione el boton para dirigirte a Actualizar productos">
+                                    <p:graphicImage value="/Images/icon_update.png" width="80px" height="80px"/>
+                                </p:commandLink>
+                                <br/>
+                                <p:outputLabel value= "Actualizar Producto"/> 
                             </td>                       
                         </tr>
                         <tr border="1px">
                             <td colspan="4" align="right">
-                                <p:commandButton value="Regresar" update="menuProductoForm, growl" action="#{menuProductoBean.irmenu()}" title="Presione el boton para regresar al Ménu Principal" />
+                                <p:commandButton value="Regresar" update="menuProductoForm, growl" action="#{menuProductoBean.irmenu()}" title="Presione el boton para regresar al Ménu Inventario" />
                                
                                  <br/>
                             </td>

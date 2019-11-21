@@ -22,6 +22,18 @@
      <navigation-rule>
         <from-view-id>/menuPrincipal.xhtml</from-view-id>
         <navigation-case>
+            <from-outcome>compras</from-outcome>
+            <to-view-id>/moduloCompras.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ventas</from-outcome>
+            <to-view-id>/facturaVenta.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inventario</from-outcome>
+            <to-view-id>/menuInventario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>producto</from-outcome>
             <to-view-id>/menuProducto.xhtml</to-view-id>
         </navigation-case>
@@ -47,7 +59,27 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/moduloCompras.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/menuInventario.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>regresare</from-outcome>
+            <to-view-id>/menuInventario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>producto</from-outcome>
+            <to-view-id>/menuProducto.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inventario</from-outcome>
+            <to-view-id>/inventario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -103,6 +135,15 @@
         <navigation-case>
             <from-outcome>regresar</from-outcome>
             <to-view-id>/menuProducto.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <navigation-rule>
+        <from-view-id>/facturaVenta.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>regresar</from-outcome>
+            <to-view-id>/menuPrincipal.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -168,6 +209,12 @@
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean>
+        <description>Bean que gestiona la logica del menu de inventario</description>
+        <managed-bean-name>menuInventarioBean</managed-bean-name>
+        <managed-bean-class>beans.MenuInventarioBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
         <description>Bean que gestiona la logica del menu de producto</description>
         <managed-bean-name>menuProductoBean</managed-bean-name>
         <managed-bean-class>beans.MenuProductoBean</managed-bean-class>
@@ -213,6 +260,12 @@
         <description>ManagedBean que gestiona la actualizacion del producto a nivel de modelo</description>
         <managed-bean-name>consultarProductoDbAction</managed-bean-name>
         <managed-bean-class>dbActions.ConsultarProductoDbAction</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona la logica de la factura venta</description>
+        <managed-bean-name>facturaVentaBean</managed-bean-name>
+        <managed-bean-class>beans.FacturaVentaBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
 </faces-config>
